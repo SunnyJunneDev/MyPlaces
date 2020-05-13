@@ -13,6 +13,7 @@
 		851857DC246AC37200867DE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 851857DB246AC37200867DE0 /* Assets.xcassets */; };
 		851857DF246AC37200867DE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 851857DD246AC37200867DE0 /* LaunchScreen.storyboard */; };
 		851857E7246ACA0700867DE0 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851857E6246ACA0700867DE0 /* MainTableViewController.swift */; };
+		85198C87246C074D00590602 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 85198C86246C074D00590602 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		851857DE246AC37200867DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		851857E0246AC37200867DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		851857E6246ACA0700867DE0 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		85198C86246C074D00590602 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		851857C6246AC36D00867DE0 = {
 			isa = PBXGroup;
 			children = (
+				85198C86246C074D00590602 /* .gitignore */,
 				851857D1246AC36D00867DE0 /* MyPlaces */,
 				851857D0246AC36D00867DE0 /* Products */,
 			);
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85198C87246C074D00590602 /* .gitignore in Resources */,
 				851857DF246AC37200867DE0 /* LaunchScreen.storyboard in Resources */,
 				851857DC246AC37200867DE0 /* Assets.xcassets in Resources */,
 				851857DA246AC36D00867DE0 /* Main.storyboard in Resources */,
