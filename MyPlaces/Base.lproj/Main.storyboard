@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--My Places-->
         <scene sceneID="7Xr-yo-BQy">
             <objects>
                 <tableViewController id="3xU-t7-FM5" customClass="MainTableViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="3xU-t7-FM5" id="Nk8-h8-dxd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="1I6-Ou-YOp"/>
+                    <navigationItem key="navigationItem" title="My Places" id="1I6-Ou-YOp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTm-G1-FTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,6 +43,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mo6-Z1-c6V">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="3xU-t7-FM5" kind="relationship" relationship="rootViewController" id="LYK-je-cax"/>
