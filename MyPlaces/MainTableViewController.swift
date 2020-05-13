@@ -27,7 +27,8 @@ class MainTableViewController: UITableViewController {
         
         cell.namePlace.text = restaurantNames[indexPath.row]
         cell.imageOfPlace.image = UIImage(named: restaurantNames[indexPath.row])
-        //cell.imageView?.image.width = cell.frame.size.height
+        cell.imageOfPlace.contentMode = .center
+        cell.imageOfPlace.contentMode = .scaleToFill
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace.clipsToBounds = true
         
