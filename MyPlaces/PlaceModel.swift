@@ -2,28 +2,30 @@
 //  PlaceModel.swift
 //  MyPlaces
 //
-//  Created by Светлана Шардакова on 13.05.2020.
-//  Copyright © 2020 Светлана Шардакова. All rights reserved.
-//
 
-import Foundation
+import RealmSwift
 
-struct Place {
+class Place: Object {
     
-    var name: String
-    var location: String
-    var type: String
-    var image: String
+    @objc dynamic var name = ""
+    @objc dynamic var location: String?
+    @objc dynamic var type: String?
+    @objc dynamic var imageData: Data?
     
-    static let restaurantNames = ["Хачо и Пури", "2 Берега", "Пятерочка", "Олис суши"]
+    let restaurantNames = ["Хачо и Пури", "2 Берега", "Пятерочка", "Олис суши"]
     
-    static func getPlace() -> [Place] {
+    func savePlaces() {
         
-        var places = [Place]()
-        
-        for place in restaurantNames{
-            places.append(Place(name: place, location: "Санкт-Петербург", type: "Ресторан", image: place))
+        for place in restaurantNames {
+            
+            let image = UIImage(named: place)
+            guard let imageData = image?.pngData() else {return}
+            
+            let newPlace = Place()
+            newPlace.name = place
+            newPlace.location = "Saint-Petersburg"
+            newPlace.type = "Restaurant"
+            newPlace.imageData = imageData
         }
-        return places
     }
 }
