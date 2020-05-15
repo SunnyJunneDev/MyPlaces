@@ -10,7 +10,6 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
     
-    var newPlace: Place?
     var imageIsChanged = false
     
     @IBOutlet var placeImage: UIImageView!
@@ -21,12 +20,11 @@ class NewPlaceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        saveButton.isEnabled = false
+        placeNameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         tableView.tableFooterView = UIView()
-        
-        saveButton.isEnabled = false
-        
-        placeNameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
 
 //MARK: - Table view delegate
@@ -107,11 +105,14 @@ extension NewPlaceTableViewController: UITextFieldDelegate {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
             
-        newPlace = Place(name: placeNameTF.text!,
-                         location: placeLocationTF.text,
-                         type: placeTypeTF.text,
-                         image: image,
-                         restaurantName: nil)
+        let imageData = image?.pngData()
+        
+        let newPlace = Place(name: placeNameTF.text!,
+                             location: placeLocationTF.text,
+                             type: placeTypeTF.text,
+                             imageData: imageData)
+        
+        StorageManager.saveObject(newPlace)
     }
         
 }
