@@ -82,7 +82,7 @@ class NewPlaceTableViewController: UITableViewController {
             placeImage.image = image
             placeImage.contentMode = .scaleAspectFill
             placeNameTF.text = currentPlace?.name
-            placeLocationTF.text = currentPlace?.name
+            placeLocationTF.text = currentPlace?.location
             placeTypeTF.text = currentPlace?.type
             
         }
