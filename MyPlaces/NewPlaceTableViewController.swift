@@ -10,6 +10,8 @@ import UIKit
 
 class NewPlaceTableViewController: UITableViewController {
     
+    var currentPlace: Place?
+    
     var imageIsChanged = false
     
     @IBOutlet var placeImage: UIImageView!
@@ -22,7 +24,10 @@ class NewPlaceTableViewController: UITableViewController {
         super.viewDidLoad()
     
         saveButton.isEnabled = false
+        
         placeNameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        setupEditScreen()
         
         tableView.tableFooterView = UIView()
     }
@@ -66,6 +71,32 @@ class NewPlaceTableViewController: UITableViewController {
         }
     }
     
+    private func setupEditScreen() {
+        
+        setupNavigationBar()
+        imageIsChanged = true
+        
+        if currentPlace != nil {
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else {return}
+            
+            placeImage.image = image
+            placeImage.contentMode = .scaleAspectFill
+            placeNameTF.text = currentPlace?.name
+            placeLocationTF.text = currentPlace?.name
+            placeTypeTF.text = currentPlace?.type
+            
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
+    }
+    
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
@@ -95,7 +126,7 @@ extension NewPlaceTableViewController: UITextFieldDelegate {
         }
     }
     
-    func saveNewPlace(){
+    func savePlace(){
         
         var image: UIImage?
         
@@ -112,9 +143,17 @@ extension NewPlaceTableViewController: UITextFieldDelegate {
                              type: placeTypeTF.text,
                              imageData: imageData)
         
-        StorageManager.saveObject(newPlace)
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.type = newPlace.type
+                currentPlace?.location = newPlace.location
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            StorageManager.saveObject(newPlace)
+        }
     }
-        
 }
 
 

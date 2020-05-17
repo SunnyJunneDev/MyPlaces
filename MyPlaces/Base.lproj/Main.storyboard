@@ -10,7 +10,7 @@
         <scene sceneID="7Xr-yo-BQy">
             <objects>
                 <tableViewController id="3xU-t7-FM5" customClass="MainTableViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pfo-f7-jnD" customClass="ma">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pfo-f7-jnD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -68,6 +68,7 @@
                                     <outlet property="locationLabel" destination="PeM-Sq-h64" id="Qof-rA-j5f"/>
                                     <outlet property="namePlace" destination="Vl2-mT-Ebh" id="fxL-pK-PCc"/>
                                     <outlet property="typeLabel" destination="I1n-3K-wxw" id="7vv-6I-Nxl"/>
+                                    <segue destination="As6-zu-AR5" kind="show" identifier="showDetail" id="EcS-ja-rm1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,7 +77,7 @@
                             <outlet property="delegate" destination="3xU-t7-FM5" id="Nk8-h8-dxd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Places" id="1I6-Ou-YOp">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="1I6-Ou-YOp">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Y63-Ym-YAX">
                             <connections>
                                 <segue destination="7jf-w5-gw7" kind="presentation" modalTransitionStyle="crossDissolve" id="X0I-8g-fD8"/>
@@ -93,7 +94,7 @@
             <objects>
                 <tableViewController id="As6-zu-AR5" customClass="NewPlaceTableViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0SB-Oq-Hpo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -108,7 +109,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="HuQ-Ze-nJy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250.00000000000006"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -233,7 +234,7 @@
                             <outlet property="delegate" destination="As6-zu-AR5" id="Rk3-Wb-EU9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Place" id="8w0-Fn-BUh">
+                    <navigationItem key="navigationItem" title="New Place" largeTitleDisplayMode="always" id="8w0-Fn-BUh">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="i5t-Ek-g2M">
                             <connections>
                                 <action selector="cancelAction:" destination="As6-zu-AR5" id="F9C-BC-yge"/>
@@ -256,7 +257,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KsG-1c-0TB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="SwY-LM-Wpa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1536.8" y="81.409295352323838"/>
+            <point key="canvasLocation" x="930" y="81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VmT-3y-9fy">
@@ -272,20 +273,20 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oC1-pE-w4e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826" y="82"/>
+            <point key="canvasLocation" x="929" y="-640"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cdU-E1-60D">
             <objects>
                 <navigationController id="IlH-ql-OJz" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mo6-Z1-c6V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mo6-Z1-c6V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="35"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -300,4 +301,7 @@
     <resources>
         <image name="Photo" width="195" height="196"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="EcS-ja-rm1"/>
+    </inferredMetricsTieBreakers>
 </document>
