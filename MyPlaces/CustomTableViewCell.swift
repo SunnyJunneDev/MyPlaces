@@ -14,9 +14,5 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var namePlace: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-    
-    //tableView.rowHeight = UITableView.automaticDimension
-    //tableView.estimatedRowHeight = 85
-    
 
 }
