@@ -11,11 +11,11 @@ import UIKit
 class NewPlaceTableViewController: UITableViewController {
     
     var currentPlace: Place?
-    
     var imageIsChanged = false
     
-    @IBOutlet var placeImage: UIImageView!
     @IBOutlet var saveButton: UIBarButtonItem!
+    
+    @IBOutlet var placeImage: UIImageView!
     @IBOutlet var placeNameTF: UITextField!
     @IBOutlet var placeLocationTF: UITextField!
     @IBOutlet var placeTypeTF: UITextField!
@@ -24,9 +24,7 @@ class NewPlaceTableViewController: UITableViewController {
         super.viewDidLoad()
     
         saveButton.isEnabled = false
-        
         placeNameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
         setupEditScreen()
         
         tableView.tableFooterView = UIView()
@@ -58,7 +56,7 @@ class NewPlaceTableViewController: UITableViewController {
             photo.setValue(photoIcon, forKey: "image")
             photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
-            let cancel = UIAlertAction(title: "Canel", style: .cancel)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
                 
             actionSheet.addAction(camera)
             actionSheet.addAction(photo)
@@ -68,61 +66,6 @@ class NewPlaceTableViewController: UITableViewController {
             
         } else {
             view.endEditing(true)
-        }
-    }
-    
-    private func setupEditScreen() {
-        
-        setupNavigationBar()
-        imageIsChanged = true
-        
-        if currentPlace != nil {
-            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else {return}
-            
-            placeImage.image = image
-            placeImage.contentMode = .scaleAspectFill
-            placeNameTF.text = currentPlace?.name
-            placeLocationTF.text = currentPlace?.location
-            placeTypeTF.text = currentPlace?.type
-            
-        }
-    }
-    
-    private func setupNavigationBar() {
-        if let topItem = navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
-        navigationItem.leftBarButtonItem = nil
-        title = currentPlace?.name
-        saveButton.isEnabled = true
-    }
-    
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
-    }
-    
-}
-
-
-// MARK: - Text field delegate
-
-extension NewPlaceTableViewController: UITextFieldDelegate {
-    
-    //hide keyboard by clicking "Done"
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    //save Button disabled/enabled
-    
-    @objc private func textFieldChanged() {
-        
-        if placeNameTF.text?.isEmpty == false {
-            saveButton.isEnabled = true
-        } else {
-            saveButton.isEnabled = false
         }
     }
     
@@ -152,6 +95,63 @@ extension NewPlaceTableViewController: UITextFieldDelegate {
             }
         } else {
             StorageManager.saveObject(newPlace)
+        }
+    }
+    
+    private func setupEditScreen() {
+        
+        if currentPlace != nil {
+            
+            setupNavigationBar()
+            imageIsChanged = true
+            
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else {return}
+            
+            placeImage.image = image
+            placeImage.contentMode = .center
+            //placeImage.contentMode = .scaleAspectFit
+            placeImage.contentMode = .scaleAspectFill
+            placeNameTF.text = currentPlace?.name
+            placeLocationTF.text = currentPlace?.location
+            placeTypeTF.text = currentPlace?.type
+            
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
+    }
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+}
+
+
+// MARK: - Text field delegate
+
+extension NewPlaceTableViewController: UITextFieldDelegate {
+    
+    //hide keyboard by clicking "Done"
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //save Button disabled/enabled
+    
+    @objc private func textFieldChanged() {
+        
+        if placeNameTF.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
         }
     }
 }
