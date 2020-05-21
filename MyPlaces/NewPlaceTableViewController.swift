@@ -27,8 +27,11 @@ class NewPlaceTableViewController: UITableViewController {
         saveButton.isEnabled = false
         placeNameTF.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         setupEditScreen()
-        
-        tableView.tableFooterView = UIView()
+    
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0,
+        y: 0,
+        width: tableView.frame.size.width,
+        height: 1))
     }
 
 //MARK: - Table view delegate
@@ -72,13 +75,22 @@ class NewPlaceTableViewController: UITableViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {return }
         
-        let mapVC = segue.destination as! MapViewController
-        mapVC.place.name = placeNameTF.text!
-        mapVC.place.location = placeLocationTF.text!
-        mapVC.place.type = placeTypeTF.text!
-        mapVC.place.imageData = placeImage.image?.pngData()
+        guard
+            let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapViewController
+            else { return }
+        
+        mapVC.incomeSegueIdentifier = identifier
+        mapVC.mapViewControllerDelegate = self
+        
+        if identifier == "showPlace" {
+            mapVC.place.name = placeNameTF.text!
+            mapVC.place.location = placeLocationTF.text!
+            mapVC.place.type = placeTypeTF.text!
+            mapVC.place.imageData = placeImage.image?.pngData()
+        }
+        
     }
     
     func savePlace(){
@@ -191,4 +203,10 @@ extension NewPlaceTableViewController: UIImagePickerControllerDelegate, UINaviga
         dismiss(animated: true)
     }
     
+}
+
+extension NewPlaceTableViewController: MapViewControllerDelegate {
+    func getAddress(_ address: String?) {
+        placeLocationTF.text = address
+    }
 }
